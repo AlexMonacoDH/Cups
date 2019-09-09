@@ -63,4 +63,8 @@ class ProdutosController extends Controller
         //Retornando para a lista de produtos
         return redirect('/produtos');
     }
+    public function show($id){
+        $produto = Produto::find($id);
+        return view('produtos.show',compact('produto'));
+    }
 }

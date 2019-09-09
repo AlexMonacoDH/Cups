@@ -21,7 +21,7 @@
 					<td class="align-middle">{{ $p->quantidade }}</td>
 					<td class="align-middle">{{ $p->categoria->nome }}</td>
 					<td class="align-middle">
-						<a class="badge badge-warning" href="">Visualizar</a>
+					<a class="badge badge-warning" href="/produtos/{{ $p->id }}">Visualizar</a>
 						<a class="badge badge-primary" href="/produtos/{{ $p->id }}/edit">Editar</a>
 						<form action="/produtos/{{ $p->id }}" method="post">
 							@method('delete')
