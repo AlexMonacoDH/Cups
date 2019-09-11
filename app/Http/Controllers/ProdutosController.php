@@ -23,6 +23,17 @@ class ProdutosController extends Controller
         return view('produtos.edit',compact('produto','categorias'));
     }
     public function update($id){
+        
+        //Validar o request
+        request()->validate(
+            [
+                'nome' => 'required',
+                'categoria' => 'required',
+                'preco' => 'required|gte:0|lt:999.99',
+                'quantidade' => 'required|gt:0|lt:1000'
+            ]
+        );
+
         //Carregar o produto no bd
         $produto = Produto::find($id);
         //Alterando os campos do produto
