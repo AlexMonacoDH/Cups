@@ -29,7 +29,7 @@ class ProdutosController extends Controller
             [
                 'nome' => 'required',
                 'categoria' => 'required',
-                'preco' => 'required|gte:0|lt:999.99',
+                'preco' => 'required|gte:0|lte:999.99',
                 'quantidade' => 'required|gt:0|lt:1000'
             ]
         );
@@ -53,6 +53,14 @@ class ProdutosController extends Controller
         return view('produtos.create',compact('categorias'));
     }
     public function store(){
+        request()->validate(
+            [
+                'nome' => 'required',
+                'categoria' => 'required',
+                'preco' => 'required|gte:0|lte:999.99',
+                'quantidade' => 'required|gt:0|lt:1000'
+            ]
+        );
         //Criar um novo produto
         $produto = new Produto();
         //Atribui valores para os campos do produto
